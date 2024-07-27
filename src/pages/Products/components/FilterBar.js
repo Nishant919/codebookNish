@@ -1,9 +1,8 @@
 import { useFilter } from "../../../context";
-import { filterReducer } from "../../../reducers";
 
 export const FilterBar = ({ setShow }) => {
 
-  const { state, dispatch, initialProductList } = useFilter();
+  const { state, dispatch } = useFilter();
 
   const handleBestSeller = () => {
     dispatch({

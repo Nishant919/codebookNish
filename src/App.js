@@ -3,11 +3,13 @@ import { Footer, Header } from './components';
 
 function App() {
   return (
-    <div className="App dark:bg-dark">
-      <Header />
-      <AllRoutes />
-      <Footer />
-    </div>
+    <>
+      <div className="App dark:bg-dark">
+        <Header />
+        <AllRoutes />
+        <Footer />
+      </div>
+    </>
   );
 }
 
