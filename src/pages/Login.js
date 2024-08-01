@@ -21,7 +21,7 @@ export const Login = () => {
       const data = await login(authDetail);
       data.accessToken ? navigate("/products") : toast.error(data);
     } catch (error) {
-      { toast.error("Sorry, Failed to fetch the data") }
+      toast.error("Sorry, Failed to fetch the data" + error.message);
     }
 
   }

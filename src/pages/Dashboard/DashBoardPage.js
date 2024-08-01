@@ -16,7 +16,7 @@ export const DashboardPage = () => {
         const data = await getOrders();
         setOrders(data);
       } catch (error) {
-        { toast.error("Sorry, Failed to fetch the order data") }
+        toast.error("Sorry, Failed to fetch the order data" + error.message);
       }
     }
     getAllOrders();

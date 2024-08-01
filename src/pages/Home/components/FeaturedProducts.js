@@ -15,7 +15,7 @@ export const FeaturedProducts = () => {
         const data = await getFeaturedProducts();
         setProducts(data);
       } catch (error) {
-        { toast.error("Featured products " + error.message) }
+        toast.error("Featured products " + error.message);
 
       }
     }

@@ -22,7 +22,7 @@ export const DropdownLoggedIn = ({ SetDropDown }) => {
                 const data = await getUser();
                 setUser(data);
             } catch (error) {
-                toast.error("Sorry, Failed to fetch the data");
+                toast.error("Sorry, Failed to fetch the data" + error.message);
             }
         }
         getSingleUser();

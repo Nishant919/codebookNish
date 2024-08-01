@@ -20,7 +20,7 @@ export const ProductDetail = () => {
         const data = await getProductDetail(id);
         setProduct(data);
       } catch (error) {
-        { toast.error("Product " + error.message) }
+        toast.error("Product " + error.message)
       }
     }
     fetchProducts();

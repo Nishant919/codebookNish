@@ -22,7 +22,7 @@ export const ProductsList = () => {
         const data = await getProducts(searchTerm);
         initialProductList(data);
       } catch (error) {
-        toast.error(error.message)
+        toast.error(error.message);
       }
     }
     fetchProducts();
