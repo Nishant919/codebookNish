@@ -1,15 +1,8 @@
-const getSession = () => {
-    const token = JSON.parse(sessionStorage.getItem("token"));
-    const cbid = JSON.parse(sessionStorage.getItem("cbid"));
-    return { token, cbid }
-}
-
-
 export async function getProducts(searchTerm) {
     const response = await fetch(`${process.env.REACT_APP_HOST}/444/products?name_like=${searchTerm ? searchTerm : ""}`);
-
+    const errorMessage = { message: response.statusText, status: response.status }
     if (!response.ok) {
-        throw { message: response.statusText, status: response.status }
+        throw errorMessage;
     }
 
     const data = await response.json();
@@ -20,8 +13,9 @@ export async function getProducts(searchTerm) {
 export async function getProductDetail(id) {
     const response = await fetch(`${process.env.REACT_APP_HOST}/444/products/${id}`);
 
+    const errorMessage = { message: response.statusText, status: response.status }
     if (!response.ok) {
-        throw { message: response.statusText, status: response.status }
+        throw errorMessage;
     }
 
     const data = await response.json();
@@ -32,8 +26,9 @@ export async function getProductDetail(id) {
 export async function getFeaturedProducts() {
     const response = await fetch(`${process.env.REACT_APP_HOST}/444/featured_products`);
 
+    const errorMessage = { message: response.statusText, status: response.status }
     if (!response.ok) {
-        throw { message: response.statusText, status: response.status }
+        throw errorMessage;
     }
 
     const data = await response.json();

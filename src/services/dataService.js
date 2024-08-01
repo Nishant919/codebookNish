@@ -16,10 +16,10 @@ export async function getUser() {
 
     const response = await fetch(`${process.env.REACT_APP_HOST}/600/users/${cbid}`, requestOptions);
 
+    const errorMessage = { message: response.statusText, status: response.status }
     if (!response.ok) {
-        throw { message: response.statusText, status: response.status }
+        throw errorMessage;
     }
-
     const data = await response.json();
 
     return data;
@@ -38,10 +38,10 @@ export async function createOrder(order) {
 
     const response = await fetch(`${process.env.REACT_APP_HOST}/660/orders`, requestOptions);
 
+    const errorMessage = { message: response.statusText, status: response.status }
     if (!response.ok) {
-        throw { message: response.statusText, status: response.status }
+        throw errorMessage;
     }
-
     const data = await response.json();
     return data;
 }
@@ -57,10 +57,10 @@ export async function getOrders() {
 
     const response = await fetch(`${process.env.REACT_APP_HOST}/660/orders?user.id=${cbid}`, requestOptions);
 
+    const errorMessage = { message: response.statusText, status: response.status }
     if (!response.ok) {
-        throw { message: response.statusText, status: response.status }
+        throw errorMessage;
     }
-
     const data = await response.json();
     return data;
 }

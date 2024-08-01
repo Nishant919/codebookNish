@@ -7,10 +7,10 @@ export async function login(authDetail) {
 
     const response = await fetch(`${process.env.REACT_APP_HOST}/login`, requestOptions);
 
+    const errorMessage = { message: response.statusText, status: response.status }
     if (!response.ok) {
-        throw { message: response.statusText, status: response.status }
+        throw errorMessage;
     }
-
     const data = await response.json();
 
     if (data.accessToken) {
@@ -30,10 +30,10 @@ export async function register(authDetail) {
 
     const response = await fetch(`${process.env.REACT_APP_HOST}/register`, requestOptions);
 
+    const errorMessage = { message: response.statusText, status: response.status }
     if (!response.ok) {
-        throw { message: response.statusText, status: response.status }
+        throw errorMessage;
     }
-
     const data = await response.json();
 
     if (data.accessToken) {
