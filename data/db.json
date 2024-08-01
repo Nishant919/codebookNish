@@ -237,31 +237,65 @@
       "best_seller": true
     }
   ],
-  "orders": [],
+  "orders": [
+    {
+      "cartList": [
+        {
+          "id": 10001,
+          "name": "Basics To Advanced In React",
+          "overview": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
+          "long_description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta aut, vel ipsum maxime quam quia, quaerat tempore minus odio exercitationem illum et eos, quas ipsa aperiam magnam officiis libero expedita quo voluptas deleniti sit dolore? Praesentium tempora cumque facere consectetur quia, molestiae quam, accusamus eius corrupti laudantium aliquid! Tempore laudantium unde labore voluptates repellat, dignissimos aperiam ad ipsum laborum recusandae voluptatem non dolore. Reiciendis cum quo illum. Dolorem, molestiae corporis.",
+          "price": 29,
+          "poster": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
+          "image_local": "/assets/images/10001.avif",
+          "rating": 5,
+          "in_stock": true,
+          "size": 5,
+          "best_seller": true
+        },
+        {
+          "id": 10004,
+          "name": "The Complete Guide to Backend Development",
+          "overview": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
+          "long_description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta aut, vel ipsum maxime quam quia, quaerat tempore minus odio exercitationem illum et eos, quas ipsa aperiam magnam officiis libero expedita quo voluptas deleniti sit dolore? Praesentium tempora cumque facere consectetur quia, molestiae quam, accusamus eius corrupti laudantium aliquid! Tempore laudantium unde labore voluptates repellat, dignissimos aperiam ad ipsum laborum recusandae voluptatem non dolore. Reiciendis cum quo illum. Dolorem, molestiae corporis.",
+          "price": 99,
+          "poster": "https://images.unsplash.com/photo-1595617795501-9661aafda72a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
+          "image_local": "/assets/images/10004.avif",
+          "rating": 5,
+          "in_stock": true,
+          "size": 7,
+          "best_seller": true
+        },
+        {
+          "id": 10009,
+          "name": "Python Deep Dive With Projects",
+          "overview": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
+          "long_description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta aut, vel ipsum maxime quam quia, quaerat tempore minus odio exercitationem illum et eos, quas ipsa aperiam magnam officiis libero expedita quo voluptas deleniti sit dolore? Praesentium tempora cumque facere consectetur quia, molestiae quam, accusamus eius corrupti laudantium aliquid! Tempore laudantium unde labore voluptates repellat, dignissimos aperiam ad ipsum laborum recusandae voluptatem non dolore. Reiciendis cum quo illum. Dolorem, molestiae corporis.",
+          "price": 29,
+          "poster": "https://images.unsplash.com/photo-1624953587687-daf255b6b80a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
+          "image_local": "/assets/images/10009.avif",
+          "rating": 5,
+          "in_stock": true,
+          "size": 3,
+          "best_seller": false
+        }
+      ],
+      "amount_paid": 157,
+      "quantity": 3,
+      "user": {
+        "name": "Kiddo",
+        "email": "anushkasengar15@gmail.com",
+        "id": 1
+      },
+      "id": 1
+    }
+  ],
   "users": [
     {
-      "email": "goelnishant490@gmail.com",
-      "password": "$2a$10$g/9me3l4C1oH/r7S5kNMWuqn6ZNNzWjLBZ46JRVwKNssqD/MQO24G",
-      "name": "Nish",
+      "email": "anushkasengar15@gmail.com",
+      "password": "$2a$10$PalroY6i4UcWGQKi6foaIeY4z8ZxRTBrLx0j2F9AWqCZLB0b4hnnG",
+      "name": "Kiddo",
       "id": 1
-    },
-    {
-      "email": "goelnishant499@gmail.com",
-      "password": "$2a$10$8COS.idUSpVf9VC2CVZ7BuyfJb6G/XYV.oZh7Ah9ZbRSSodNSTt7y",
-      "name": "Nish",
-      "id": 2
-    },
-    {
-      "email": "goelnishant40@gmail.com",
-      "password": "$2a$10$lwR.VLIGopRBKRL8xFbe0.LFoFRFmG1VP1Kg/Z35XtamHD1L1Vm4i",
-      "name": "NN",
-      "id": 3
-    },
-    {
-      "email": "goelnishant49@gmail.com",
-      "password": "$2a$10$TzUoG0y2Y27nPT.CmJRFcu/e4Vyp04M45FAzpwnmD7YqjEar94Geu",
-      "name": "Pawan Kumar Agarwal",
-      "id": 4
     }
   ]
 }

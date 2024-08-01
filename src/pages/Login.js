@@ -1,6 +1,8 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { login } from "../services";
+import { useTitle } from "../hooks/useTitle";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -10,29 +12,21 @@ export const Login = () => {
   async function handleLogin(event) {
     event.preventDefault();
 
-    const registerDetail = {
-      email: email.current.value,
-      password: password.current.value
-    }
+    try {
+      const authDetail = {
+        email: email.current.value,
+        password: password.current.value
+      }
 
-    const requestOptions = {
-      method: "POST",
-      headers: { "content-Type": "application/json" },
-      body: JSON.stringify(registerDetail)
-    }
-
-    const response = await fetch("http://localhost:8000/login", requestOptions);
-    const data = await response.json();
-
-    if (data.accessToken) {
-      sessionStorage.setItem("token", JSON.stringify(data.accessToken));
-      sessionStorage.setItem("cbid", JSON.stringify(data.user.id));
-      navigate("/products");
-    } else {
-      toast.error(data);
+      const data = await login(authDetail);
+      data.accessToken ? navigate("/products") : toast.error(data);
+    } catch (error) {
+      { toast.error("Sorry, Failed to fetch the data") }
     }
 
   }
+
+  useTitle("Login - CodeBook");
 
   return (
     <main>

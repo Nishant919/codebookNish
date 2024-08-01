@@ -1,21 +1,39 @@
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { getUser, logOut } from "../../services";
+import { toast } from "react-toastify";
 
 export const DropdownLoggedIn = ({ SetDropDown }) => {
 
     const navigate = useNavigate();
 
     const handleLogOut = () => {
-        sessionStorage.removeItem("token");
-        sessionStorage.removeItem("cbid");
+        logOut();
         SetDropDown(false);
         navigate("/");
     }
+
+    const [user, setUser] = useState([]);
+
+    useEffect(() => {
+
+        async function getSingleUser() {
+            try {
+                const data = await getUser();
+                setUser(data);
+            } catch (error) {
+                toast.error("Sorry, Failed to fetch the data");
+            }
+        }
+        getSingleUser();
+    }, [])
+
 
 
     return (
         <div id="dropdownAvatar" className="select-none	absolute top-10 right-0 z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
             <div className="py-3 px-4 text-sm text-gray-900 dark:text-white">
-                <div className="font-medium truncate">shubham@example.com</div>
+                <div className="font-medium truncate">{user.email || "guest@abc.com"}</div>
             </div>
             <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUserAvatarButton">
                 <li>

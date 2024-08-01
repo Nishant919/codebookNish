@@ -4,6 +4,8 @@ import { useTitle } from "../../hooks/useTitle";
 import { useCart, useFilter } from "../../context";
 import { ProductCard } from "../../components";
 import { FilterBar } from "./components/FilterBar";
+import { getProducts } from "../../services";
+import { toast } from "react-toastify";
 
 export const ProductsList = () => {
   const { products, initialProductList } = useFilter();
@@ -16,12 +18,15 @@ export const ProductsList = () => {
 
   useEffect(() => {
     async function fetchProducts() {
-      const response = await fetch(`http://localhost:8000/products?name_like=${searchTerm ? searchTerm : ""}`);
-      const data = await response.json()
-      initialProductList(data);
+      try {
+        const data = await getProducts(searchTerm);
+        initialProductList(data);
+      } catch (error) {
+        toast.error(error.message)
+      }
     }
     fetchProducts();
-  }, [searchTerm, cartList]);
+  }, [searchTerm]); // eslint-disable-line
 
   return (
     <main>

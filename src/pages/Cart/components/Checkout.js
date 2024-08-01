@@ -1,16 +1,55 @@
 import { useNavigate } from "react-router-dom"
 import { useCart } from "../../../context";
+import { useEffect, useState } from "react";
+import { createOrder, getUser } from "../../../services";
+import { toast } from "react-toastify";
 
-export const Checkout = ({ total, setShowCheckout }) => {
+export const Checkout = ({ setShowCheckout }) => {
 
     const navigate = useNavigate();
-    const { handleClearCart } = useCart();
+    const { cartList, total, handleClearCart } = useCart();
+    const [user, setUser] = useState([]);
 
-    const handlePayment = (event) => {
+
+
+    async function handlePayment(event) {
         event.preventDefault();
-        handleClearCart();
-        navigate("/cart");
+
+        const order = {
+            cartList: cartList,
+            amount_paid: total,
+            quantity: cartList.length,
+            user: {
+                name: user.name,
+                email: user.email,
+                id: user.id
+            }
+        }
+
+        try {
+            const data = await createOrder(order);
+            handleClearCart();
+            navigate("/order-summary", { state: { data: data, status: true } });
+        } catch (error) {
+            navigate("/order-summary", { state: { status: false } });
+
+        }
     }
+
+
+
+    useEffect(() => {
+
+        async function getSingleUser() {
+            try {
+                const data = await getUser();
+                setUser(data);
+            } catch (error) {
+                { toast.error("Sorry, Failed to fetch the data") }
+            }
+        }
+        getSingleUser();
+    }, [user])
 
     return (
         <section>
@@ -31,11 +70,13 @@ export const Checkout = ({ total, setShowCheckout }) => {
                             <form onSubmit={handlePayment} className="space-y-6" >
                                 <div>
                                     <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name:</label>
-                                    <input type="text" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-white" value="Shubham Sarda" disabled required="" />
+                                    <input type="text" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                                     focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-white" value={user.name || "Guest"} disabled required="" />
                                 </div>
                                 <div>
                                     <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email:</label>
-                                    <input type="text" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-white" value="shubham@example.com" disabled required="" />
+                                    <input type="text" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                                     focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-white" value={user.email || "guest@abc.com"} disabled required="" />
                                 </div>
                                 <div>
                                     <label htmlFor="card" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Card Number:</label>
